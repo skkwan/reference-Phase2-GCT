@@ -67,8 +67,8 @@ int main() {
                   if( wordId2 < 32){
                        link_in[wordId2].range(end, start) = 0 ; //  [i][j] crystal in 15:20 
 
-                 if(i == 0 && j == 5) link_in[wordId2].range(end, start) = 12 ;
-                 if(i == 1 && j == 9) link_in[wordId2].range(end, start) = 6 ;
+                 if(i == 1 && j == 0) link_in[wordId2].range(end, start) = 112 ;
+                 if(i == 1 && j == 3) link_in[wordId2].range(end, start) = 80 ;
 //                 if(i == 5 && j == 5) link_in[wordId2].range(end, start) = 13 ;
 //                 if(i == 9 && j == 3) link_in[wordId2].range(end, start) = 32 ;
 //                 if(i == 11 && j == 3) link_in[wordId2].range(end, start) = 37 ;
@@ -76,8 +76,8 @@ int main() {
 //                 if(i == 10 && j == 11) link_in[wordId2].range(end, start) = 5 ;
 //                 if(i == 10 && j == 12) link_in[wordId2].range(end, start) = 19 ;
 //                 if(i == 6 && j == 15) link_in[wordId2].range(end, start) = 21 ;
-//                 if(i == 6 && j == 16) link_in[wordId2].range(end, start) = 8 ;
-//                 if(i == 7 && j == 15) link_in[wordId2].range(end, start) = 7 ;
+                 if(i == 0 && j == 19) link_in[wordId2].range(end, start) = 228 ;
+                 if(i == 0 && j == 16) link_in[wordId2].range(end, start) = 72 ;
 				}
 
 

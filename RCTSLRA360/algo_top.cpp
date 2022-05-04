@@ -575,9 +575,10 @@ clusterInfo cluster_tmp;
 
         for(loop i=0; i<CRYSTAL_IN_ETA; i++){
                         #pragma HLS UNROLL
-           for(loop k=5; k<CRYSTAL_IN_PHI; k++){
+           for(loop k=0; k<CRYSTAL_IN_PHI-3; k++){
                         #pragma HLS UNROLL
-            temp[i+1][k-3] = tempX[i][k].energy ;
+//new           temp[i+1][k-3] = tempX[i][k].energy ;
+           temp[i+1][k] = tempX[i][k+3].energy ;
          }}
 
 
@@ -632,9 +633,9 @@ clusterInfo cluster_tmp;
 
         for(loop i=0; i<CRYSTAL_IN_ETA; i++){
                         #pragma HLS UNROLL
-           for(loop k=0; k<CRYSTAL_IN_PHI-5; k++){
+           for(loop k=0; k<CRYSTAL_IN_PHI-1; k++){
                         #pragma HLS UNROLL
-            temp[i+1][k+7] = tempX[i][k].energy ;
+            temp[i+1][k+5] = tempX[i][k].energy ;
          }}
 
 
