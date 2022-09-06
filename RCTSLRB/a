@@ -1,0 +1,59 @@
+
+void processInputLinks(ap_uint<384> link_in[N_INPUT_LINKS], crystal ECALRegion3x4_1[CRYSTAL_IN_ETA][CRYSTAL_IN_PHI], crystal ECALRegion3x4_2[CRYSTAL_IN_ETA][CRYSTAL_IN_PHI],crystal ECALRegion3x4_3[CRYSTAL_IN_ETA][CRYSTAL_IN_PHI], towerHCAL HCALRegion3x4_1[HCAL_TOWER_IN_ETA][HCAL_TOWER_IN_PHI], towerHCAL HCALRegion3x4_2[HCAL_TOWER_IN_ETA][HCAL_TOWER_IN_PHI],towerHCAL HCALRegion3x4_3[HCAL_TOWER_IN_ETA][HCAL_TOWER_IN_PHI]){
+	    #pragma HLS ARRAY_PARTITION variable=link_in complete dim=0
+        #pragma HLS ARRAY_PARTITION variable=ECALRegion3x4_1 complete dim=0
+        #pragma HLS ARRAY_PARTITION variable=ECALRegion3x4_2 complete dim=0
+        #pragma HLS ARRAY_PARTITION variable=ECALRegion3x4_3 complete dim=0
+        #pragma HLS ARRAY_PARTITION variable=HCALRegion3x4_1 complete dim=0
+        #pragma HLS ARRAY_PARTITION variable=HCALRegion3x4_2 complete dim=0
+        #pragma HLS ARRAY_PARTITION variable=HCALRegion3x4_3 complete dim=0
+
+        ap_uint<32> start = 0;
+        ap_uint<32> end = 13;
+  
+        ap_uint<6> wordId, wordId1, wordId2, startId ;
+
+
+        for(loop i=0; i<CRYSTAL_IN_ETA; i++){
+                #pragma HLS UNROLL
+                for(loop j=0; j<CRYSTAL_IN_PHI; j++){
+                        #pragma HLS UNROLL
+                       wordId = (i/5)*4+(j/5) ;
+                       wordId1 = wordId + 12 ;
+                       wordId2 = wordId + 24 ;
+                       startId = (i%5)*5+(j%5) ;
+                       start = startId*14 ; end = start + 13 ;
+
+                       ECALRegion3x4_1[i][j] = crystal(link_in[wordId].range(end, start));
+                       ECALRegion3x4_2[i][j] = crystal(link_in[wordId1].range(end, start));
+                       ECALRegion3x4_3[i][j] = crystal(link_in[wordId2].range(end, start));
+ 
+         }}
+
+
+        start = 0; end = 9;
+        for(loop i=0; i<HCAL_TOWER_IN_ETA; i++){
+            //#pragma HLS UNROLL
+            for(loop j=0; j<HCAL_TOWER_IN_PHI; j++){
+                #pragma HLS UNROLL
+                    HCALRegion3x4_1[i][j] = towerHCAL(link_in[36].range(end, start));
+                    start += 10; end += 10;
+            }
+        }
+        for(loop i=0; i<HCAL_TOWER_IN_ETA; i++){
+            //#pragma HLS UNROLL
+            for(loop j=0; j<HCAL_TOWER_IN_PHI; j++){
+                #pragma HLS UNROLL
+                    HCALRegion3x4_2[i][j] = towerHCAL(link_in[36].range(end, start));
+                    start += 10; end += 10;
+            }
+        }
+        for(loop i=0; i<HCAL_TOWER_IN_ETA; i++){
+            //#pragma HLS UNROLL
+            for(loop j=0; j<HCAL_TOWER_IN_PHI; j++){
+                #pragma HLS UNROLL
+                    HCALRegion3x4_3[i][j] = towerHCAL(link_in[36].range(end, start));
+                    start += 10; end += 10;
+            }
+        }
+}

@@ -1,0 +1,81 @@
+        /*---------------------------------link 0, 1, 2, 3 ------------------------------------*/
+        ap_uint<32> start1_1 = 0;
+        link_out[0] = 0;
+        link_out[1] = 0;
+        link_out[2] = 0;
+        link_out[3] = 0;
+
+        for(loop oLink=0; oLink<12; oLink += 4){
+        #pragma HLS UNROLL
+            ap_uint<32> end = start1_1 + 14;
+            link_out[0].range(end, start1_1) = SumEH1[oLink].hoe | (((ap_uint<16>) SumEH1[oLink].et ) << 4) ; 
+            link_out[1].range(end, start1_1) = SumEH1[oLink+1].hoe  | (((ap_uint<16>) SumEH1[oLink+1].et ) << 4) ;
+            link_out[2].range(end, start1_1) = SumEH1[oLink+2].hoe  | (((ap_uint<16>) SumEH1[oLink+2].et ) << 4) ;
+            link_out[3].range(end, start1_1) = SumEH1[oLink+3].hoe  | (((ap_uint<16>) SumEH1[oLink+3].et ) << 4) ;
+            start1_1 += 15;
+        }
+
+
+        for(loop oLink=0; oLink<12; oLink += 4){
+        #pragma HLS UNROLL
+            ap_uint<32> end = start1_1 + 14;
+            link_out[0].range(end, start1_1) = SumEH2[oLink].hoe | (((ap_uint<16>) SumEH2[oLink].et ) << 4) ; 
+            link_out[1].range(end, start1_1) = SumEH2[oLink+1].hoe  | (((ap_uint<16>) SumEH2[oLink+1].et ) << 4) ;
+            link_out[2].range(end, start1_1) = SumEH2[oLink+2].hoe  | (((ap_uint<16>) SumEH2[oLink+2].et ) << 4) ;
+            link_out[3].range(end, start1_1) = SumEH2[oLink+3].hoe  | (((ap_uint<16>) SumEH2[oLink+3].et ) << 4) ;
+            start1_1 += 15;
+        }
+
+
+        for(loop oLink=0; oLink<12; oLink += 4){
+        #pragma HLS UNROLL
+            ap_uint<32> end = start1_1 + 14;
+            link_out[0].range(end, start1_1) = SumEH3[oLink].hoe | (((ap_uint<16>) SumEH3[oLink].et ) << 4) ; 
+            link_out[1].range(end, start1_1) = SumEH3[oLink+1].hoe  | (((ap_uint<16>) SumEH3[oLink+1].et ) << 4) ;
+            link_out[2].range(end, start1_1) = SumEH3[oLink+2].hoe  | (((ap_uint<16>) SumEH3[oLink+2].et ) << 4) ;
+            link_out[3].range(end, start1_1) = SumEH3[oLink+3].hoe  | (((ap_uint<16>) SumEH3[oLink+3].et ) << 4) ;
+            start1_1 += 15;
+        }
+
+
+        for(loop oLink=0; oLink<12; oLink += 4){
+        #pragma HLS UNROLL
+            ap_uint<32> end = start1_1 + 14;
+            link_out[0].range(end, start1_1) = SumEH4[oLink].hoe | (((ap_uint<16>) SumEH4[oLink].et ) << 4) ; 
+            link_out[1].range(end, start1_1) = SumEH4[oLink+1].hoe  | (((ap_uint<16>) SumEH4[oLink+1].et ) << 4) ;
+            link_out[2].range(end, start1_1) = SumEH4[oLink+2].hoe  | (((ap_uint<16>) SumEH4[oLink+2].et ) << 4) ;
+            link_out[3].range(end, start1_1) = SumEH4[oLink+3].hoe  | (((ap_uint<16>) SumEH4[oLink+3].et ) << 4) ;
+            start1_1 += 15;
+        }
+
+
+        for(loop oLink=0; oLink<12; oLink += 4){
+        #pragma HLS UNROLL
+            ap_uint<32> end = start1_1 + 14;
+            link_out[0].range(end, start1_1) = SumEH5[oLink].hoe | (((ap_uint<16>) SumEH5[oLink].et ) << 4) ; 
+            link_out[1].range(end, start1_1) = SumEH5[oLink+1].hoe  | (((ap_uint<16>) SumEH5[oLink+1].et ) << 4) ;
+            link_out[2].range(end, start1_1) = SumEH5[oLink+2].hoe  | (((ap_uint<16>) SumEH5[oLink+2].et ) << 4) ;
+            link_out[3].range(end, start1_1) = SumEH5[oLink+3].hoe  | (((ap_uint<16>) SumEH5[oLink+3].et ) << 4) ;
+            start1_1 += 15;
+        }
+
+        for(loop oLink=0; oLink<8; oLink += 4){
+        #pragma HLS UNROLL
+            ap_uint<32> end = start1_1 + 14;
+            link_out[0].range(end, start1_1) = SumEH6[oLink].hoe | (((ap_uint<16>) SumEH6[oLink].et ) << 4) ; 
+            link_out[1].range(end, start1_1) = SumEH6[oLink+1].hoe  | (((ap_uint<16>) SumEH6[oLink+1].et ) << 4) ;
+            link_out[2].range(end, start1_1) = SumEH6[oLink+2].hoe  | (((ap_uint<16>) SumEH6[oLink+2].et ) << 4) ;
+            link_out[3].range(end, start1_1) = SumEH6[oLink+3].hoe  | (((ap_uint<16>) SumEH6[oLink+3].et ) << 4) ;
+            start1_1 += 15;
+        }
+
+        for(loop oLink=8; oLink<16; oLink += 4){
+        #pragma HLS UNROLL
+            ap_uint<32> end = start1_1 + 59;
+            link_out[0].range(end, start1_1) = sort_clusterOutput[oLink];
+            link_out[1].range(end, start1_1) = sort_clusterOutput[oLink+1];
+            link_out[2].range(end, start1_1) = sort_clusterOutput[oLink+2];
+            link_out[3].range(end, start1_1) = sort_clusterOutput[oLink+3];
+            start1_1 += 60;
+        }
+
